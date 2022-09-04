@@ -20,7 +20,7 @@ def analyse(*, url, name):
     ].split("</script>")[0]
 
     with open(f'_out/{name}.json', 'w') as outfile:
-        outfile.write(json.dumps(next_data, indent=2, sort_keys=True))
+        outfile.write(json.dumps(json.loads(next_data), indent=2, sort_keys=True))
 
     print(url, name)
     print(f"html      = {naturalsize(len(html))}")
