@@ -6,7 +6,7 @@ import urllib.request
 
 
 def naturalsize(bytes):
-    return "%.2f kB" % (bytes / 1024)
+    return "%3.2f kB" % (bytes / 1024)
 
 
 def analyse(*, url, name):
@@ -24,15 +24,15 @@ def analyse(*, url, name):
 
     print(url, name)
     print(f"html      = {naturalsize(len(html))}")
-    print(f"next_data = {naturalsize(len(next_data))}")
+    print(f"next_data = {naturalsize(len(next_data)).rjust(9)} ({int(len(next_data) / len(html) * 100)}%)")
     print("")
 
 
 if __name__ == "__main__":
     for url, name in [
-        ("http://localhost:3000/stories", "stories"),
-        ("http://localhost:3000/", "homepage"),
-        ("http://localhost:3000/articles/Yp3GthEAACIAwRi9", "article"),
+        ("https://wellcomecollection.org/", "homepage"),
+        ("https://wellcomecollection.org/stories", "stories"),
+        ("https://wellcomecollection.org/articles/Yp3GthEAACIAwRi9", "article"),
         # ("http://localhost:3000/whats-on", "whats-on"),
         # ("http://localhost:3000/works", "works"),
         # ("http://localhost:3000/images", "images"),
