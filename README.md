@@ -33,3 +33,20 @@ I use this script to analyse the props, to identity ways we can reduce the size 
 [Next.js]: https://nextjs.org
 [at work]: https://github.com/wellcomecollection/wellcomecollection.org
 [getServerSideProps]: https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props
+
+## Usage
+
+You need Python 3, then download the script from this repo.
+
+The script takes two arguments: a URL, and a name to identify the results.
+
+Example:
+
+```console
+$ python3 measure.py https://wellcomecollection.org/collections collections
+html      = 210.22 kB
+next_data =  35.71 kB (16%)
+
+Saved HTML to _out/collections.html
+Saved JSON to _out/collections.json
+```
