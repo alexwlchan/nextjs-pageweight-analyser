@@ -36,17 +36,21 @@ I use this script to analyse the props, to identity ways we can reduce the size 
 
 ## Usage
 
-You need Python 3, then download the script from this repo.
+You need Node installed.
+Download the `measure.js` from this repo.
 
-The script takes two arguments: a URL, and a name to identify the results.
+The script takes two arguments:
+
+* the URL to fetch (required)
+* a label for the downloaded files (optional)
 
 Example:
 
 ```console
-$ python3 measure.py https://wellcomecollection.org/collections collections
-html      = 210.22 kB
-next_data =  35.71 kB (16%)
+$ node measure.js https://wellcomecollection.org/collections collections
+HTML       =  196.45 kB
+NEXT_DATA =   52.17 kB (26.6%)
 
-Saved HTML to _out/collections.html
-Saved JSON to _out/collections.json
+Saved HTML to out/collections.html
+Saved JSON to out/collections.json
 ```

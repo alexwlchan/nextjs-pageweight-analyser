@@ -88,14 +88,14 @@ https.get(url, options, (res) => {
   // We've got the whole HTML file.  Parse it, and save the results.
   res.on('end', () => {
     let htmlByteCount = Buffer.byteLength(html, 'utf8');
-    console.log(`HTML          = ${leftPad(naturalSize(htmlByteCount), 10)}`);
+    console.log(`HTML       = ${leftPad(naturalSize(htmlByteCount), 10)}`);
 
     let nextData = html
         .split('<script id="__NEXT_DATA__" type="application/json">')[1]
         .split("</script>")[0];
 
     let nextDataByteCount = Buffer.byteLength(nextData, 'utf8');
-    console.log(`__NEXT_DATA__ = ${leftPad(naturalSize(nextDataByteCount), 10)} (${(nextDataByteCount / htmlByteCount * 100).toFixed(1)}%)`);
+    console.log(`NEXT_DATA = ${leftPad(naturalSize(nextDataByteCount), 10)} (${(nextDataByteCount / htmlByteCount * 100).toFixed(1)}%)`);
 
     console.log();
 
@@ -103,7 +103,7 @@ https.get(url, options, (res) => {
     console.log(`Saved HTML to out/${label}.html`);
 
     writeToFile({ filename: `${label}.json`, contents: nextData });
-    console.log(`Saved __NEXT_DATA__ to out/${label}.json`);
+    console.log(`Saved JSON to out/${label}.json`);
   });
 
 }).on('error', (err) => {
