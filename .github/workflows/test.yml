@@ -1,0 +1,22 @@
+name: Test
+
+on:
+  push:
+    branches:
+    - main
+
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+    - name: Run tests
+      run: |
+        node measure https://wellcomecollection.org/collections collections
+        node measure https://wellcomecollection.org/collections
