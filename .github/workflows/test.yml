@@ -16,7 +16,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
+
+    # This is a crude test harness that checks the script is working correctly: it
+    # runs the script, and checks the generated files are created as expected.
     - name: Run tests
       run: |
         node measure https://wellcomecollection.org/collections collections
+
+        ls out
+        if [ ! -f "out/collections.html" ]; then exit 1; fi
+        if [ ! -f "out/collections.json" ]; then exit 1; fi
+
         node measure https://wellcomecollection.org/collections
+
+        ls out
+        if [ ! -f "out/export.html" ]; then exit 1; fi
+        if [ ! -f "out/export.json" ]; then exit 1; fi
